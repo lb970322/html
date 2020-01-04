@@ -1,0 +1,418 @@
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style-type: none;
+}
+
+.navb {
+    width: 100%;
+    height: 64px;
+    background-color: #ffffff;
+}
+
+.navb_container {
+    width: 1200px;
+    margin: 0 auto;
+    height: 64px;
+    overflow: hidden;
+    text-align: center;
+}
+
+.navb_container a:hover {
+    color: #fff;
+    /* background-color: #7789ff; */
+    background-color: #797979;
+}
+
+.a_swrap {
+    width: 150px;
+    height: 64px;
+    display: inline-block;
+    text-align: center;
+    line-height: 64px;
+    color: #000;
+    font-size: 18px;
+}
+
+.a_swrap_logo {
+    width: 150px;
+    height: 50px;
+    margin-top: 7px;
+    display: inline-block;
+    float: left;
+}
+
+.a_swrap_logo img {
+    width: 100%;
+    height: 50px;
+}
+
+.com_opt {
+    cursor: pointer;
+    font-size: 16px;
+    height: 30px;
+    text-align: center;
+    float: right;
+    margin-top: 16px;
+}
+
+
+/* 画布 */
+
+#WebGL-output canvas {
+    width: 100% !important;
+    /* height: 750px !important; */
+}
+
+.index_top {
+    width: 100%;
+    /* height: 750px; */
+    background-color: #000000;
+    position: relative;
+    overflow: hidden;
+}
+
+.index_top .index_top_center {
+    width: 100%;
+    height: 160px;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    margin-top: -110px;
+    color: #cecece;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.index_top .index_top_title {
+    font-size: 120px;
+    padding: 0;
+}
+
+.index_top .index_top_tips {
+    font-size: 16px;
+    font-weight: normal;
+    margin-top: -55px;
+}
+
+.index_top .left_tips {
+    position: absolute;
+    bottom: 100px;
+    left: -40px;
+    color: #5f5f5f;
+    transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    /* IE 9 */
+    -moz-transform: rotate(90deg);
+    /* Firefox */
+    -webkit-transform: rotate(90deg);
+    /* Safari 和 Chrome */
+    -o-transform: rotate(90deg);
+    /* Opera */
+}
+
+.index_top .right_tips {
+    position: absolute;
+    bottom: 48px;
+    right: 20px;
+    color: #5f5f5f;
+}
+
+.dg.ac {
+    display: none;
+}
+
+
+/* 关于 */
+
+.about {
+    width: 1200px;
+    margin: 30px auto;
+    overflow: hidden;
+}
+
+.about_title {
+    height: 112px;
+}
+
+.index_title {
+    text-align: right;
+    font-size: 32px;
+    color: #000;
+    float: right;
+    line-height: 112px;
+}
+
+.index_title span {
+    display: inline-block;
+    border-left: 1px solid #a8a8a8;
+    margin-left: 100px;
+    font-size: 12px;
+    padding: 0 30px;
+    font-weight: bold;
+    height: 80px;
+    line-height: 80px;
+}
+
+.about article {
+    width: 800px;
+    float: left;
+    margin-top: 50px;
+}
+
+.about article h5 {
+    font-size: 40px;
+    color: #000;
+}
+
+.about article section {
+    margin-top: 50px;
+    line-height: 60px;
+    font-size: 30px;
+    color: #000000;
+}
+
+.bottom_right {
+    width: 400px;
+    float: right;
+}
+
+
+/* 核心 */
+
+.technology {
+    width: 1200px;
+    margin: 30px auto;
+    overflow: hidden;
+}
+
+.technology_title {
+    width: 100%;
+    text-align: left;
+}
+
+.technology ul {
+    width: 1200px;
+    margin: 20px 0;
+    overflow: hidden;
+    padding: 0;
+}
+
+.technology ul li {
+    width: 380px;
+    margin: 0 10px;
+    float: left;
+    text-align: center;
+}
+
+.technology ul li div {
+    height: 380px;
+    border-radius: 50%;
+    width: 380px;
+    margin: 0 auto;
+}
+
+.technology ul li div h6 {
+    font-size: 26px;
+}
+
+.technology ul li div section {
+    font-size: 14px;
+    line-height: 20px;
+    padding: 0 30px;
+    margin-top: 20px;
+}
+
+.technology ul li div img {
+    width: 20px;
+    margin: 45px 0;
+}
+
+.technology ul li img {
+    width: 50px;
+    margin: 30px 0;
+}
+
+.li_two {
+    width: 600px;
+}
+
+
+/* 横幅 */
+
+.hf {
+    width: 100%;
+    background-color: #313131;
+    height: 100px;
+    text-align: center;
+}
+
+.hf h3 {
+    color: #ffffff;
+    font-size: 40px;
+    line-height: 100px;
+}
+
+
+/* 轮播图 */
+
+.lunbo {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.swiper-container {
+    width: 100%;
+}
+
+.swiper-slide img {
+    width: 100%;
+}
+
+.swiper-pagination-bullet {
+    background-color: #cecece;
+}
+
+
+/* 插图 */
+
+.ct {
+    width: 100%;
+    margin: 50px 0;
+}
+
+.ct img {
+    width: 100%;
+    height: 300px;
+}
+
+
+/* 团队 */
+
+.team {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.leftTop {
+    height: 112px;
+    margin: 10px 0;
+}
+
+.team_item {
+    text-align: center;
+    position: relative;
+}
+
+.team_item img {
+    width: 300px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+
+.team_item .name {
+    font-size: 24px;
+    color: #959595;
+}
+
+.team_item .info {
+    font-size: 20px;
+    color: #797979;
+}
+
+#swiper2 .swiper-slide-prev .team_item img,
+#swiper2 .swiper-slide-next .team_item img {
+    width: 200px;
+    margin-top: 50px;
+}
+
+
+/* 底部foot */
+
+.foot {
+    width: 100%;
+    margin-top: 50px;
+    overflow: hidden;
+}
+
+.foot_top {
+    width: 100%;
+    background-color: #333333;
+    border-bottom: 2px solid rgb(149, 149, 149);
+    overflow: hidden;
+}
+
+.foot_bottom {
+    width: 100%;
+    height: 78px;
+    line-height: 78px;
+    text-align: center;
+    background-color: rgb(55, 55, 55);
+}
+
+.foot_content {
+    width: 1200px;
+    margin: 0 auto;
+    padding: 40px 0;
+    text-align: center;
+}
+
+.foot_content_ul {
+    width: 300px;
+    float: left;
+}
+
+.foot_msg_title {
+    color: rgb(233, 233, 233);
+    font-size: 30px;
+}
+
+.foot_msg {
+    margin-top: 30px;
+}
+
+.foot_a {
+    margin-bottom: 10px;
+}
+
+.foot_a a {
+    color: rgb(162, 162, 162);
+    font-size: 16px;
+}
+
+.foot_msg img {
+    width: 150px;
+    margin-bottom: 30px;
+}
+
+.foot_load {
+    margin-top: 50px;
+}
+
+.foot_msg p {
+    color: #cecece;
+    text-align: left;
+    font-size: 18px;
+    line-height: 30px;
+}
+
+.bps {
+    font-size: 18px;
+    color: #cecece;
+    text-decoration: none;
+}
+
+.bps:hover {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.foot_bottom p {
+    color: rgb(234, 234, 234);
+    font-size: 20px;
+}

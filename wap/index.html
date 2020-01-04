@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>塔克链</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="keywords" content="TAK">
+    <meta name="description" content="TAK">
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1, minimum-scale=1">
+    <link rel="shortcut icon" href="../images/logo1.png">
+    <!-- end -->
+    <link rel="stylesheet" href="css/samples/sample-02/css/style.css">
+    <link rel="stylesheet" href="css/samples/sample-05/css/style.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <link rel="stylesheet" href="css/index_wap.css">
+    <script type="text/javascript" src="../js/three.min.js"></script>
+    <script type="text/javascript" src="../js/dat.gui.min.js"></script>
+    <script type="text/javascript" src="../js/Stats.min.js"></script>
+    <script src="../js/jquery-2.1.1.min.js"></script>
+    <script src="../js/swiper.min.js"></script>
+    <script src="../js/index.js"></script>
+    <script type="text/javascript">
+        document.documentElement.style.fontSize = document.documentElement.clientWidth / 750 * 100 + 'px';
+    </script>
+    <script>
+        var userAgentInfo = navigator.userAgent;
+        var Agents = new Array("Android", "iPhone", "SymbianOS", "Windows Phone", "iPad", "iPod");
+        var flag = false;
+        var v = 0
+        for (v = 0; v < Agents.length; v++) {
+            if (userAgentInfo.indexOf(Agents[v]) > 0) {
+                flag = true;
+                break;
+            }
+        }
+        if (!flag) {
+            window.location = '../index.html'; //如果是PC设备访问，就跳转到指定的网址。
+        }
+    </script>
+</head>
+
+<body>
+    <style type="text/css">
+        body {
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        }
+        
+        a,
+        div,
+        img {
+            outline: none;
+            -moz-outline-style: none;
+        }
+        
+        #banner_cover {
+            width: 100%;
+            height: 100%;
+            z-index: 101;
+            position: fixed;
+            background: #000;
+            opacity: 0.3;
+            display: none;
+        }
+        
+        #play_img {
+            width: 1rem;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-left: -.5rem;
+            margin-top: -.5rem;
+            z-index: 102;
+            /*display: none;*/
+        }
+        
+        #close {
+            position: fixed;
+            top: 34px;
+            right: 4%;
+            font-size: 34px;
+            z-index: 10000;
+            padding: 20px;
+            cursor: pointer;
+            display: none;
+            width: 24px;
+            height: 24px;
+            background-image: url('../statics/images/close_play.png');
+            background-repeat: no-repeat;
+        }
+        
+        video {
+            position: fixed;
+            top: 30%;
+            z-index: 9999;
+            display: none;
+        }
+        
+        .nav a {
+            font-size: 0.35rem;
+            padding: 0.1rem .3rem .3rem 0;
+        }
+        
+        .nav {
+            justify-content: flex-start;
+        }
+        
+        .exit {
+            width: 0.7rem !important;
+            height: 0.7rem;
+            /*background-color: red;*/
+            position: absolute;
+            top: 1.02rem;
+            left: 6.36rem;
+            background-image: url("images/mobile_exit.png");
+            background-size: 100% 100%;
+            /*background-repeat:no-repeat;*/
+        }
+        
+        .nav p:nth-child(2) {
+            margin-top: 1.02rem;
+        }
+        
+        .nav>* {
+            padding-left: .5rem;
+        }
+        
+        .nav>*:not(:last-child) a,
+        .nav>*:first-child {
+            border: none;
+        }
+    </style>
+
+    <script type="text/javascript">
+        $('#banner_cover').click(function() {
+            $('#bg_cover').hide(200);
+            $('#play_img').show(200);
+            $('#banner_cover').hide();
+            $('video').hide(200);
+            $('#close').hide(200);
+            // $('vide').pause();
+            document.getElementById("video1").pause();
+        });
+        $('#close').click(function() {
+            $('#bg_cover').hide(200);
+            $('#play_img').show(200);
+            $('#banner_cover').hide();
+            $('video').hide(200);
+            $('#close').hide(200);
+            // $('vide').pause();
+            document.getElementById("video1").pause();
+            if (play_status == 1) {
+                document.getElementById("bg_m").play();
+            }
+
+            // play_status = 1;
+        });
+        $('#play_img').click(function() {
+            $('#play_img').hide(200);
+            $('#close').show(200);
+            $('#banner_cover').show();
+            $('#bg_cover').show(200);
+            $('video').show(200);
+            // $('vide').play();
+            document.getElementById("video1").play();
+            document.getElementById("bg_m").pause();
+            // play_status = 2;
+        });
+    </script>
+
+    <header>
+        <div class="isHead">
+            <a href="">
+                <img class="go-home" src="images/mobile_logo.png" alt="logo">
+            </a>
+            <div class="navIcon">
+                <img src="images/mobile_mov.png" alt="">
+            </div>
+        </div>
+        <div class="mobil_lg">
+            <select onchange="window.location=this.value;">
+              <option value="./index.html">中文</option>
+              <option value="#">English</option>
+            </select>
+        </div>
+        <!--  隐藏div菜单  -->
+        <div class="nav" style="display: none">
+            <div class="exit">
+                <img src="images/mobile_exit.png" alt="退出">
+            </div>
+            <p><a href="./index.html">首页</a></p>
+            <p>
+                <a href="#">团队</a>
+            </p>
+            <p>
+                <a href="#">白皮书</a>
+            </p>
+
+        </div>
+    </header>
+
+    <!--蒙版-->
+    <!-- <div class="mask"></div> -->
+    <div class="container" id="page-top">
+        <div class="center">
+            <!-- top img部分 -->
+            <div class="mobil_center_1" id="WebGL-output">
+                <div>
+                    <h1>塔克链</h1>
+                </div>
+            </div>
+            <!-- <div class="mobil_center_1" id="bodymovin">
+                <div>
+                    <p style="font-family:'fontHelveticaNeueCE35Roman'">THE PIONEER OF GLOBAL GAME PUBLIC CHAIN</p>
+                </div>
+            </div> -->
+            <!-- 第一个div -->
+            <div class="mobil_center_2">
+                <div>
+                    <img src="../images/1.png" alt="">
+                    <div>
+                        <span>关于</span>
+                        <span>|</span>
+                        <span>01</span>
+                    </div>
+                </div>
+                <div class="mobil_center_2_text">
+                    <h1>塔克链介绍</h1>
+                    <p>全球物联网应用增长区势明显，万物互联时代开启。全球新一轮科 技革命和产业变革正在孕育兴起，信息通信技术以前所未有的速度转化为 现实生产力，深刻改变着全球经济格局、利益格局、安全格局。物联网作 为信息通信技术的典型代表，在全球范围内呈现加速发展的态势。</p>
+                </div>
+            </div>
+            <!-- 第二个div -->
+            <div class="mobil_center_3">
+                <div>
+                    <i>核心</i>
+                    <span>|</span>
+                    <span>02</span>
+                </div>
+                <!-- 圆球内容 -->
+                <div class="ball_text_div">
+                    <img class="ball_text_div_img1" src="images/3.png" alt="">
+                    <!--  圆球文字轮播 -->
+                    <div class="swiper-container my-ball-div swiper-container-horizontal swiper-container-ios" id="swiper1">
+                        <div class="parallax-bg my-ball-div-bg" data-swiper-parallax="-23%" style="transition-duration: 0ms; transform: translate3d(-5.75%, 0px, 0px);"></div>
+                        <div class="swiper-wrapper" style="transition-duration: 0ms; transform: translate3d(-240px, 0px, 0px);">
+
+                            <div class="swiper-slide swiper-slide-active" style="display: flex; flex-direction: column; width: 240px;" data-swiper-slide-index="0">
+                                <div class="title my-ball-title" data-swiper-parallax="-300" style="transition-duration: 0ms; transform: translate3d(0px, 0px, 0px);">公平、透明、开放和自治</div>
+                                <div class="text" data-swiper-parallax="-100" style="transition-duration: 0ms; transform: translate3d(0px, 0px, 0px);">
+                                    <p class="my-ball-text">区块链技术和思想的引入，可以让所有机构或个人在无须任何中心 机构背书的前提下公平地参与到物联数据的收集共享和开放运动中来。所 有的机构或个人只需认同这些基于密码学和数据的规则，即可加入到万物 互联数据开放平台中，成为 TAK DATA LINK（塔克链）上的一个节点， 数据平台的开放、交易或使用，没有任何人可以掌控。</p>
+                                </div>
+                            </div>
+                            <div class="swiper-slide swiper-slide-next" style="display: flex; flex-direction: column; width: 240px;" data-swiper-slide-index="1">
+                                <div class="title my-ball-title" data-swiper-parallax="-300" data-swiper-parallax-opacity="0" style="transition-duration: 0ms; opacity: 0; transform: translate3d(300px, 0px, 0px);">数据可确权、可溯源</div>
+
+                                <div class="text" data-swiper-parallax="-100" style="transition-duration: 0ms; transform: translate3d(100px, 0px, 0px);">
+                                    <p class="my-ball-text">通过区块链的分布式账本，能够安全透明地记录所有数据上传、更 新、交易或使用行为，这些行为记录一经确认就不可被篡改，使得开放平 台上的所有数据具有可确权、可溯源的功能。</p>
+                                </div>
+                            </div>
+                            <div class="swiper-slide swiper-slide-next" style="display: flex; flex-direction: column; width: 240px;" data-swiper-slide-index="2">
+                                <div class="title my-ball-title" data-swiper-parallax="-300" data-swiper-parallax-opacity="0" style="transition-duration: 0ms; opacity: 0; transform: translate3d(600px, 0px, 0px);">安全可信数据交易</div>
+
+                                <div class="text" data-swiper-parallax="-100" style="transition-duration: 0ms; transform: translate3d(100px, 0px, 0px);">
+                                    <p class="my-ball-text">点对点方式数据交易，从根本上避免了平台沉淀数据的可能性。应 用智能合约，数据透明公开定价，保证交易的公平性。 购买的数据由数据提供方用数据购买方的公钥加密传输，只有购买方的私钥才能解密， 22 从而避免数据泄露。平台上的数据都有唯一的签名，如果数据购买方对 数据进行转售， 收益会记入初始数据提供方。基于 智能合约和社区共识的数据评分机制。</p>
+                                </div>
+                            </div>
+                            <div class="swiper-slide swiper-slide-next" style="display: flex; flex-direction: column; width: 240px;" data-swiper-slide-index="3">
+                                <div class="title my-ball-title" data-swiper-parallax="-300" data-swiper-parallax-opacity="0" style="transition-duration: 0ms; opacity: 0; transform: translate3d(900px, 0px, 0px);">多维度大数据整合</div>
+
+                                <div class="text" data-swiper-parallax="-100" style="transition-duration: 0ms; transform: translate3d(100px, 0px, 0px);">
+                                    <p class="my-ball-text">由海量垂直应用分别基于共识机制共享数据，形成大数据共享开放 平台，从而实现更完整、更精准的多维度数据画像。</p>
+                                </div>
+                            </div>
+                            <div class="swiper-slide swiper-slide-next" style="display: flex; flex-direction: column; width: 240px;" data-swiper-slide-index="3">
+                                <div class="title my-ball-title" data-swiper-parallax="-300" data-swiper-parallax-opacity="0" style="transition-duration: 0ms; opacity: 0; transform: translate3d(1200px, 0px, 0px);">用户隐私保护与用户数据确权</div>
+
+                                <div class="text" data-swiper-parallax="-100" style="transition-duration: 0ms; transform: translate3d(100px, 0px, 0px);">
+                                    <p class="my-ball-text">使用统一数字身份对用户在网络上多个设备多个场景的不同身份 进行统一映射。可以用于用户数据的跨屏跨应用合并，及统一登录。 用户的个人数据完全由用户所有，用户完全掌握私钥，并由用户自 己决定向谁开放授权以及如何收费，全程可跟踪。</p>
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- Add Navigation -->
+                        <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+                    <div class="swiper-button-prev prev1 swiper-button-white myButtonleft my-button-left" tabindex="0" role="button" aria-label="Previous slide"></div>
+                    <div class="swiper-button-next next1 swiper-button-white myButtonright my-button-right" tabindex="0" role="button" aria-label="Next slide"></div>
+                </div>
+                <div class="ball_buttom_img">
+                    <img src="../images/6.png" alt="">
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+            <div class="slideshow">
+                <div></div>
+                <!-- 方框轮播图 -->
+                <div class="swiper-container" id="swiper2">
+                    <div class="swiper-wrapper">
+
+                        <div class="swiper-slide">
+                            <a href=''><img class="my-box-viewpage-img" src="../images/timg1.jpg" alt=""></a>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <a href=''><img class="my-box-viewpage-img" src="../images/timg2.jpg" alt=""></a>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <a href=''><img class="my-box-viewpage-img" src="../images/timg3.jpg" alt=""></a>
+                        </div>
+
+                        <!--        <div class="swiper-slide">-->
+                        <!--          <img class="my-box-viewpage-img" src="/statics/images/newPage/23.png" alt="">-->
+                        <!--        </div>-->
+                        <!--        <div class="swiper-slide">-->
+                        <!--            <a href='/wap/site/wallet'>-->
+                        <!--            <img class="my-box-viewpage-img" src="/statics/images/newPage/24.png" alt="">-->
+                        <!--          </a>-->
+                        <!--        </div>-->
+                    </div>
+                    <!-- Add Pagination -->
+                    <div class="swiper-pagination swp2"></div>
+                </div>
+            </div>
+            <!-- 地图插图 -->
+            <img class="red_map" src="../images/newbg.jpg" alt="">
+            <!-- 圆形轮播 -->
+            <div class="ball_carousel_person">
+                <img src="images/11_wap.png" alt="">
+                <div class="ball_carousel_person_div">
+                    <i>团队</i>
+                    <span>|</span>
+                    <span>03</span>
+                </div>
+                <div class="ceo-ball-viewpage">
+                    <div class="swiper-container swiper-container-horizontal swiper-container-ios" id="swiper3">
+                        <div class="swiper-wrapper" style="transform: translate3d(-205.333px, 0px, 0px); transition-duration: 0ms;">
+                            <div class="swiper-slide">
+                                <a href="" style="width: 100%;height: 100%;display: inline-block;position: absolute;"></a>
+                                <img src="../images/1_04.png" alt="">
+                                <h1>阿尔 · 丹尼列夫</h1>
+                                <p>技术工程师</p>
+                            </div>
+                            <div class="swiper-slide">
+                                <a href="" style="width: 100%;height: 100%;display: inline-block;position: absolute;"></a>
+                                <img src="../images/1_03.png" alt="">
+                                <h1>约翰·查尔斯</h1>
+                                <p>塔克链团队发起人</p>
+                            </div>
+                            <div class="swiper-slide">
+                                <a href="" style="width: 100%;height: 100%;display: inline-block;position: absolute;"></a>
+                                <img src="../images/1_05.png" alt="">
+                                <h1>尼克拉维</h1>
+                                <p>核心算法工程师</p>
+                            </div>
+                        </div>
+                        <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+                    <!-- Add Arrows -->
+                    <!-- <div class="swiper-button-next next3" tabindex="0" role="button" aria-label="Next slide"></div>
+                    <div class="swiper-button-prev prev3" tabindex="0" role="button" aria-label="Previous slide"></div> -->
+                </div>
+                <img src="../images/7.png" alt="">
+            </div>
+        </div>
+
+        <!-- Demo styles -->
+        <style>
+            html,
+            body {
+                position: relative;
+                height: 100%;
+            }
+            
+            body {
+                font-size: 14px;
+                color: #000;
+                margin: 0;
+                padding: 0;
+            }
+            
+            #bodymovin div h1 {
+                font-size: 1.1rem;
+                color: white;
+            }
+            
+            #bodymovin div p {
+                font-size: .17rem;
+            }
+            
+            #bodymovin {
+                background: #2e0333;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .mobil_center_1 svg {
+                height: 5.03rem !important;
+                margin-top: .94rem;
+            }
+            
+            .mobil_center_1 div {
+                position: absolute;
+                width: 100%;
+                text-align: center;
+                color: white;
+                top: 3.38rem;
+                z-index: 200;
+            }
+            
+            .mobil_center_1 div h1 {
+                font-size: 32px;
+                color: rgb( 80, 198, 226);
+            }
+            
+            .swiper-container {
+                height: 100%;
+            }
+            
+            .swiper-slide {
+                font-size: 18px;
+                color: #000;
+                -webkit-box-sizing: border-box;
+                box-sizing: border-box;
+                /* padding: 40px 60px; */
+                text-align: center;
+            }
+            
+            .parallax-bg {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 130%;
+                height: 100%;
+                -webkit-background-size: cover;
+                background-size: cover;
+                background-position: center;
+            }
+            
+            .swiper-slide .title {
+                margin: 1.3rem 0 .2rem;
+            }
+            
+            .swiper-slide .subtitle {
+                font-size: 21px;
+            }
+            
+            .ball_text_div .swiper-slide div {
+                font-size: 14px;
+                line-height: 1.3;
+                padding: 0 .5rem;
+            }
+            
+            .my-ball-div {
+                width: 4.80rem;
+                height: 4.78rem;
+                border-radius: 22%;
+            }
+            
+            .my-ball-div-bg {
+                background-color: #cecece;
+            }
+            
+            .my-button-left {
+                top: 41%;
+                background-image: url("images/15.png") !important;
+                width: .65rem;
+                background-size: 100%;
+            }
+            
+            .my-button-right {
+                top: 41%;
+                background-image: url("images/16.png") !important;
+                width: .65rem;
+                background-size: 100%;
+            }
+            
+            .my-ball-title {
+                font-size: .4rem !important;
+                font-weight: bold !important;
+            }
+            
+            .my-ball-text {
+                font-size: .17rem;
+            }
+            
+            .my-box-viewpage-img {
+                min-height: 100%;
+            }
+            
+            .my-ball-img-box {
+                margin-top: -62px;
+            }
+            
+            .my-ball-img-box h1 {
+                color: #959595;
+                font-size: .19rem;
+                font-weight: bold;
+            }
+            
+            .my-ball-img-box p {
+                color: #959595;
+                font-size: .16rem;
+            }
+            
+            .my-ball-img-box .swiper-slide {
+                width: 1.41rem !important;
+            }
+            
+            .my-ball-img-box-img {
+                width: 100%;
+                border-radius: 50%;
+            }
+            /* 选中部分css */
+            
+            .my-ball-img-box .swiper-slide-active {
+                /*top: 14px;*/
+                /*background-color: #ccc;*/
+                width: 2.15rem !important;
+            }
+            /* 前一张图 */
+            
+            .my-ball-img-box .swiper-slide-prev {
+                width: 1.41rem !important;
+            }
+            /* 后一张图 */
+            
+            .my-ball-img-box .swiper-slide-next {
+                width: 1.41rem !important;
+            }
+            
+            .my-ball {
+                padding: 0 20px;
+            }
+            
+            .swiper-button-next.swiper-button-white,
+            .swiper-container-rtl .swiper-button-prev.swiper-button-white {
+                background-image: url("../statics/images/newPage/31.png")
+            }
+            
+            .swiper-button-prev.swiper-button-white,
+            .swiper-container-rtl .swiper-button-next.swiper-button-white {
+                background-image: url("../statics/images/newPage/30.png")
+            }
+            
+            .my-ball-img-box .swiper-slide-prev {
+                margin: 0px !important;
+            }
+            
+            .my-ball-img-box .swiper-slide-active {
+                margin: 0px !important;
+            }
+            
+            .my-ball-img-box .swiper-slide-next {
+                margin: 0px !important;
+            }
+            
+            .my-ball-img-box .swiper-wrapper {
+                display: flex;
+                justify-content: space-between;
+            }
+            
+            .my-ball-img-box {
+                width: 92%;
+            }
+            
+            .my-ball .swiper-button-prev {
+                top: 34.6rem;
+                width: .30rem;
+                height: .30rem;
+            }
+            
+            .my-ball .swiper-button-next {
+                top: 34.6rem;
+                width: .30rem;
+                height: .30rem;
+            }
+            
+            .my-ball .swiper-slide,
+            .swiper-slide-duplicate div {
+                margin: 0 auto;
+            }
+            
+            .my-ball .swiper-slide,
+            .swiper-slide-duplicate,
+            .swiper-slide-next div {
+                width: 100%;
+                margin: 0 auto;
+            }
+            
+            .swiper-pagination-bullet-active {
+                background-color: #e7e7e7;
+                width: 0.08rem;
+                height: 0.08rem;
+            }
+            
+            .swiper-pagination-bullet {
+                background-color: #7f7f82;
+                width: 0.08rem;
+                height: 0.08rem;
+            }
+            
+            .mobil_center_1 {
+                height: 7.09rem;
+            }
+            
+            .mobil_center_1 canvas {
+                height: 350px !important;
+            }
+        </style>
+
+        <!-- Initialize Swiper -->
+        <script>
+            //三个轮播系统
+            var swiper1 = new Swiper('#swiper1', {
+                speed: 600,
+                parallax: true,
+                loop: true,
+                navigation: {
+                    nextEl: '.next1',
+                    prevEl: '.prev1',
+                }
+            });
+            var swiper2 = new Swiper('#swiper2', {
+                loop: true,
+                autoplay: false,
+                pagination: {
+                    el: '.swp2',
+                },
+                navigation: {
+                    nextEl: '.next2',
+                    prevEl: '.prev2',
+                }
+            });
+            var swiper3 = new Swiper('#swiper3', {
+                loop: true,
+                slidesPerView: 3, //显示的数量
+                spaceBetween: 10, //div之间的距离
+                slidesPerGroup: 1,
+                pagination: {
+                    el: '.swp3',
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: '.next3',
+                    prevEl: '.prev3',
+                }
+            });
+        </script>
+    </div>
+
+    <!-- 页尾部分 -->
+    <footer>
+        <div class="footer_div">
+            <div>联系我们</div>
+            <div></div>
+            <div class="footer_icoDiv" style="height: 1.69rem;">
+                <img src="../images/kf1.jpg" alt="" style="width: 25%;">
+                <img src="../images/kf2.jpg" alt="" style="width: 25%;">
+            </div>
+        </div>
+        <div class="footer_div" style=" margin-top: 0.8rem;">
+            <div>下载地址</div>
+            <div></div>
+            <div class="footer_icoDiv" style="height: 1.69rem;">
+                <a href="#"><img src="../images/loading.png" alt="" style="width: 40%;"></a>
+                <img src="../images/load.png" alt="">
+            </div>
+        </div>
+        <div class="footer_div" style="margin-top: 0.6rem;">
+            <div>塔克链介绍</div>
+            <div></div>
+            <div class="footer_icoDiv">
+                <p>全球物联网应用增长区势明显，万物互联时代开启。全球新一轮科 技革命和产业变革正在孕育兴起，信息通信技术以前所未有的速度转化为 现实生产力，深刻改变着全球经济格局、利益格局、安全格局。物联网作 为信息通信技术的典型代表，在全球范围内呈现加速发展的态势。</p>
+            </div>
+        </div>
+        <div class="footer_div" style="height: 1.8rem;">
+            <div>白皮书</div>
+            <div></div>
+            <div class="footer_icoDiv">
+                <p>
+                    <a style='color: #fff' href="#">塔克链白皮书</a>
+                </p>
+            </div>
+        </div>
+        <!-- <img class="mobile_foot_ico_fh" src="../statics/images/newPage/top.png" alt=""> -->
+    </footer>
+
+    <style type="text/css">
+        #music_btn {
+            position: fixed;
+            bottom: 60px;
+            right: 40px;
+            width: 36px;
+            height: 36px;
+            /*border: 1px solid #ccc;*/
+            z-index: 99;
+        }
+    </style>
+    <script type="text/javascript">
+        var play_status = 1;
+
+        //  exit 退出
+        $('.exit').click(function() {
+            $('.nav').css('display', 'none');
+        })
+    </script>
+    <style type="text/css">
+        .index_content7 h6 {
+            color: #3c507c;
+            font-weight: bold;
+            font-size: 12px;
+            margin-top: 3px;
+            text-align: center;
+        }
+        
+        .index_content7 p {
+            font-size: 10px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        .footer_icoDiv>a {
+            margin-right: .23rem;
+        }
+    </style>
+
+    <script src="../js/main.js"></script>
+
+    <script>
+        //返回顶部
+        // $(".mobile_foot_ico_fh").click(function() {
+        //     $('html , body').animate({
+        //         scrollTop: 0
+        //     }, 'slow');
+        // })
+    </script>
+</body>
+
+</html>
