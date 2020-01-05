@@ -1,0 +1,91 @@
+.team_hf {
+    width: 100%;
+    overflow: hidden;
+}
+
+.team_hf img {
+    width: 100%;
+}
+
+.team_hf_p {
+    width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    top: -150px;
+    color: #ffffff;
+    font-size: 50px;
+}
+
+
+/* 团队列表 */
+
+.team_list {
+    width: 100%;
+    position: relative;
+}
+
+.team_list .icon1 {
+    position: absolute;
+    right: 0;
+    top: 350px;
+    width: 300px;
+    z-index: -1;
+}
+
+.team_list .icon2 {
+    position: absolute;
+    left: 0;
+    top: 1050px;
+    left: 80px;
+    z-index: -1;
+}
+
+.team_list ul {
+    width: 1200px;
+    margin: 0 auto;
+    padding: 50px 0;
+}
+
+.team_list ul li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0px 0;
+}
+
+.header_pic {
+    width: 400px;
+    border-radius: 50%;
+}
+
+.team_list ul li div {
+    width: 700px;
+}
+
+.team_list ul li div p {
+    display: flex;
+    align-items: center;
+}
+
+.team_list ul li div p .name {
+    font-size: 24px;
+    color: #000;
+    font-weight: bold;
+}
+
+.team_list ul li div p .info {
+    font-size: 18px;
+    color: #3e367e;
+    margin: 0 30px;
+}
+
+.team_list ul li div p img {
+    height: 12px;
+}
+
+.team_list ul li div section {
+    font-size: 18px;
+    color: #c0c0c0;
+    line-height: 30px;
+    margin-top: 20px;
+}

@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<!-- saved from url=(0039)http://www.baerchain.com/wap/site/team2 -->
+<html lang="en" style="font-size: 50px;">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <title>团队介绍</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="keywords" content="TAK">
+    <meta name="description" content="TAK">
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1, minimum-scale=1">
+
+    <link rel="shortcut icon" href="../images/logo.png">
+    <!-- end -->
+    <link rel="stylesheet" href="./css/samples/sample-02/css/style.css">
+    <link rel="stylesheet" href="./css/samples/sample-05/css/style.css">
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="../css/swiper.min.css">
+    <link rel="stylesheet" href="./css/index_wap.css">
+    <script src="../js/jquery-2.1.1.min.js"></script>
+    <script src="../js/swiper.min.js"></script>
+    <script type="text/javascript">
+        document.documentElement.style.fontSize = document.documentElement.clientWidth / 750 * 100 + 'px';
+    </script>
+    <script>
+        var userAgentInfo = navigator.userAgent;
+        var Agents = new Array("Android", "iPhone", "SymbianOS", "Windows Phone", "iPad", "iPod");
+        var flag = false;
+        var v = 0
+        for (v = 0; v < Agents.length; v++) {
+            if (userAgentInfo.indexOf(Agents[v]) > 0) {
+                flag = true;
+                break;
+            }
+        }
+        if (!flag) {
+            window.location = '../src/team.html'; //如果是PC设备访问，就跳转到指定的网址。
+        }
+    </script>
+</head>
+
+<body>
+    <style type="text/css">
+        body {
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        }
+        
+        a,
+        div,
+        img {
+            outline: none;
+            -moz-outline-style: none;
+        }
+        
+        #banner_cover {
+            width: 100%;
+            height: 100%;
+            z-index: 101;
+            position: fixed;
+            background: #000;
+            opacity: 0.3;
+            display: none;
+        }
+        
+        #play_img {
+            width: 1rem;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-left: -.5rem;
+            margin-top: -.5rem;
+            z-index: 102;
+            /*display: none;*/
+        }
+        
+        #close {
+            position: fixed;
+            top: 34px;
+            right: 4%;
+            font-size: 34px;
+            z-index: 10000;
+            padding: 20px;
+            cursor: pointer;
+            display: none;
+            width: 24px;
+            height: 24px;
+            /* background-image: url("../../statics/images/close_play.png"); */
+            background-repeat: no-repeat;
+        }
+        
+        video {
+            position: fixed;
+            top: 30%;
+            z-index: 9999;
+            display: none;
+        }
+        
+        .nav a {
+            font-size: 0.35rem;
+            padding: 0.1rem .3rem .3rem 0;
+        }
+        
+        .nav {
+            justify-content: flex-start;
+        }
+        
+        .exit {
+            width: 0.7rem !important;
+            height: 0.7rem;
+            /*background-color: red;*/
+            position: absolute;
+            top: 1.02rem;
+            left: 6.36rem;
+            background-image: url("../images/mobile_exit.png");
+            background-size: 100% 100%;
+            /*background-repeat:no-repeat;*/
+        }
+        
+        .nav p:nth-child(2) {
+            margin-top: 1.02rem;
+        }
+        
+        .nav>* {
+            padding-left: .5rem;
+        }
+        
+        .nav>*:not(:last-child) a,
+        .nav>*:first-child {
+            border: none;
+        }
+    </style>
+
+    <script type="text/javascript">
+        $('#banner_cover').click(function() {
+            $('#bg_cover').hide(200);
+            $('#play_img').show(200);
+            $('#banner_cover').hide();
+            $('video').hide(200);
+            $('#close').hide(200);
+            // $('vide').pause();
+            document.getElementById("video1").pause();
+        });
+        $('#close').click(function() {
+            $('#bg_cover').hide(200);
+            $('#play_img').show(200);
+            $('#banner_cover').hide();
+            $('video').hide(200);
+            $('#close').hide(200);
+            // $('vide').pause();
+            document.getElementById("video1").pause();
+            if (play_status == 1) {
+                document.getElementById("bg_m").play();
+            }
+
+            // play_status = 1;
+        });
+        $('#play_img').click(function() {
+            $('#play_img').hide(200);
+            $('#close').show(200);
+            $('#banner_cover').show();
+            $('#bg_cover').show(200);
+            $('video').show(200);
+            // $('vide').play();
+            document.getElementById("video1").play();
+            document.getElementById("bg_m").pause();
+            // play_status = 2;
+        });
+    </script>
+
+    <header>
+        <div class="isHead">
+
+            <img class="go-home" src="images/mobile_logo.png" alt="logo">
+
+            <div class="navIcon">
+                <img src="./images/mobile_mov.png" alt="">
+            </div>
+        </div>
+        <div class="mobil_lg">
+            <select onchange="window.location=this.value;">
+              <option value="./team.html">中文</option>
+              <option value="#">English</option>
+            </select>
+        </div>
+        <!--  隐藏div菜单  -->
+        <div class="nav" style="display: none">
+            <div class="exit">
+                <img src="./images/mobile_exit.png" alt="退出">
+            </div>
+            <p><a href="./index.html">首页</a></p>
+            <p><a href="./team.html">团队</a></p>
+            <p><a href="">白皮书 </a></p>
+        </div>
+    </header>
+
+    <!--蒙版-->
+    <!-- <div class="mask"></div> -->
+    <div class="container" id="page-top">
+        <!-- Team2 移动模板 -->
+        <div class="Team2">
+            <div class="g-Team2-top" id="bodymovin">
+                <img src="./images/11_wap.png" alt="">
+                <h1>团队</h1>
+            </div>
+            <div class="Team2_list">
+                <div class="Team2_list_div">
+                    <img src="../images/1_03.png" alt="">
+                    <div class="Team2_list_div_title">
+                        <h1>约翰·查尔斯 <i>塔克链团队发起人 </i></h1>
+                        <img src="./images/21.png" alt="">
+                    </div>
+                    <div>
+                        <p>美国IT Summa 的创办人以及 10 年首席执行官经验。自2017年3月起脱离持有的所有区块链项目，全身投入并启动TAK DATA LINK 塔克链的区块链项目。</p>
+                    </div>
+                </div>
+
+                <div class="Team2_list_div">
+                    <img src="../images/1_04.png" alt="">
+                    <div class="Team2_list_div_title">
+                        <h1>阿尔 · 丹尼列夫 <i>技术工程师 </i></h1>
+                        <img src="./images/21.png" alt="">
+                    </div>
+                    <div>
+                        <p>俄罗斯软件工程师在商业开发方面有 10多年经验。参与并管理俄罗斯领先品牌软件开发：Sberbank、RZD、飞机建造公司。构建公司区块链开源库的核心开发人员：exonum-bootstrap，参与项目开发并担任顾问：后离开加入TAK DATA LINK 塔克链团队，目前为TAK DATA LINK 塔克链平台及技术主力工程师。</p>
+                    </div>
+                </div>
+
+                <div class="Team2_list_div">
+                    <img src="../images/1_05.png" alt="">
+                    <div class="Team2_list_div_title">
+                        <h1>尼克拉维 <i>核心算法工程师 </i></h1>
+                        <img src="./images/21.png" alt="">
+                    </div>
+                    <div>
+                        <p>基于全球支付的区块链技术及金融契约逻辑的核心定位就是由Nicolaw 在发起人的理念基础上完善而来的，目前负责TAK DATA LINK 塔克链复杂的算法制定，同时对平台规则进行测试与运算。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 页尾部分 -->
+    <footer>
+        <div class="footer_div">
+            <div>联系我们</div>
+            <div></div>
+            <div class="footer_icoDiv" style="height: 1.69rem;">
+                <img src="../images/kf1.jpg" alt="" style="width: 25%;">
+                <img src="../images/kf2.jpg" alt="" style="width: 25%;">
+            </div>
+        </div>
+        <div class="footer_div" style="margin-top: 0.8rem;">
+            <div>下载地址</div>
+            <div></div>
+            <div class="footer_icoDiv" style="height: 1.69rem;">
+                <a href=""><img src="../images/loading.png" alt="" style="width: 25%;"></a>
+                <img src="../images/load.png" alt="" style="width: 25%;">
+            </div>
+        </div>
+
+        <div class="footer_div" style="margin-top: 0.6rem;">
+            <div>塔克链介绍</div>
+            <div></div>
+            <div class="footer_icoDiv">
+                <p>全球物联网应用增长区势明显，万物互联时代开启。全球新一轮科 技革命和产业变革正在孕育兴起，信息通信技术以前所未有的速度转化为 现实生产力，深刻改变着全球经济格局、利益格局、安全格局。物联网作 为信息通信技术的典型代表，在全球范围内呈现加速发展的态势。
+                </p>
+            </div>
+        </div>
+        <div class="footer_div" style="height: 1.8rem;">
+            <div>白皮书</div>
+            <div></div>
+            <div class="footer_icoDiv">
+
+                <p><a style='color: #fff' href="">塔克链白皮书
+                    </a></p>
+            </div>
+        </div>
+        <!-- <img class="mobile_foot_ico_fh" src="../../statics/images/newPage/top.png" alt=""> -->
+    </footer>
+
+    <script type="text/javascript">
+        var play_status = 1;
+        //  exit 退出
+        $('.exit').click(function() {
+            $('.nav').css('display', 'none');
+        })
+    </script>
+    <style type="text/css">
+        .index_content7 h6 {
+            color: #3c507c;
+            font-weight: bold;
+            font-size: 12px;
+            margin-top: 3px;
+            text-align: center;
+        }
+        
+        .index_content7 p {
+            font-size: 10px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        .footer_icoDiv>a {
+            margin-right: .23rem;
+        }
+    </style>
+
+    <script src="../js/main.js"></script>
+
+    <script>
+        //返回顶部
+        $(".mobile_foot_ico_fh").click(function() {
+            $('html , body').animate({
+                scrollTop: 0
+            }, 'slow');
+        })
+    </script>
+
+
+
+
+
+</body>
+
+</html>

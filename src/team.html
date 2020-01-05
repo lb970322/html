@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="../images/logo1.png">
+    <script src="../js/jquery-2.1.1.min.js"></script>
+    <script src="../js/bootstrap.js"></script>
+    <script src="../js/swiper.min.js"></script>
+    <script src="../js/three.min.js"></script>
+    <script src="../js/dat.gui.min.js"></script>
+    <script src="../js/Stats.min.js"></script>
+    <script src="../js/index.js"></script>
+    <script src="../js/highlight.min.js"></script>
+    <script src="../js/aos.js"></script>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/swiper.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/team.css">
+    <link rel="stylesheet" href="../css/normalize.css">
+    <link rel="stylesheet" href="../css/aos.css">
+    <title>团队介绍</title>
+    <script>
+        function chargeBrowser(args) {
+            var info = window.navigator.userAgent;
+            if (info.indexOf("MSIE") != -1 && info.indexOf("compatible") != -1) { //判断IE
+                var re_ie = /MSIE.*? (\d+)/;
+                result = info.match(re_ie);
+                var version = result[1];
+                if (version < 10) {
+                    alert('请用高版本浏览器打开，推荐使用谷歌浏览器，360浏览器');
+                    // window.location.href='http://se.360.cn/';
+                } else {
+                    if (!args) {
+                        alert('为了使您的体验更加舒适，推荐使用谷歌浏览器，360浏览器，QQ浏览器,火狐浏览器等');
+                    }
+
+                }
+            } else if (info.indexOf('AppleWebKit') == -1 && info.indexOf("Firefox") == -1) {
+                if (!args) {
+                    alert('为了使您的体验更加舒适，推荐使用谷歌浏览器，360浏览器，QQ浏览器,火狐浏览器等');
+                }
+            }
+        }
+        chargeBrowser();
+    </script>
+    <script>
+        var userAgentInfo = navigator.userAgent;
+        var Agents = new Array("Android", "iPhone", "SymbianOS", "Windows Phone", "iPad", "iPod");
+        var flag = false;
+        var v = 0
+        for (v = 0; v < Agents.length; v++) {
+            if (userAgentInfo.indexOf(Agents[v]) > 0) {
+                flag = true;
+                break;
+            }
+        }
+        if (flag) {
+            window.location = '../wap/team.html'; //如果是移动设备访问，就跳转到m.html。
+        }
+    </script>
+</head>
+
+<body>
+    <!-- navbar导航栏 -->
+    <nav class="navb">
+        <div class="navb_container">
+            <a href="" class="a_swrap_logo">
+                <img src="../images/logo.png" alt="">
+            </a>
+            <a href="../index.html" class="a_swrap" style="text-decoration: none;">网站首页</a>
+            <a href="./team.html" class="a_swrap" style="text-decoration: none;">团队介绍</a>
+            <a href="#" class="a_swrap" style="text-decoration: none;">白皮书</a>
+            <!-- <a href="#" class="a_swrap" style="text-decoration: none;">新闻资讯</a>
+        <a href="#" class="a_swrap" style="text-decoration: none;">联系我们</a> -->
+            <select name="language" class="com_opt" onchange="window.location=this.value;">
+            <option value="./team.html">中文</option>
+            <option value="#">English</option>
+        </select>
+        </div>
+    </nav>
+
+    <div class="team_hf">
+        <img src="../images/news_02.png" alt="">
+        <div class="team_hf_p">
+            <p>团队</p>
+        </div>
+    </div>
+
+    <!-- 团队列表 -->
+    <div class="team_list">
+        <img src="../images/2.png" alt="" class="icon1">
+        <img src="../images/1.png" alt="" class="icon2">
+        <ul>
+            <li>
+                <img src="../images/1_03.png" alt="" class="header_pic" aos="fade-right">
+                <div aos="fade-left">
+                    <p><span class="name">约翰·查尔斯</span><span class="info">塔克链团队发起人 </span><img src="../images/team19.png" alt=""></p>
+                    <section>
+                        美国IT Summa 的创办人以及 10 年首席执行官经验。自2017年3月起脱离持有的所有区块链项目，全身投入并启动TAK DATA LINK 塔克链的区块链项目。 </section>
+                </div>
+            </li>
+            <li>
+                <div aos="fade-right">
+                    <p><span class="name">阿尔 · 丹尼列夫</span><span class="info">技术工程师 </span><img src="../images/team19.png" alt=""></p>
+                    <section>
+                        俄罗斯软件工程师在商业开发方面有 10多年经验。参与并管理俄罗斯领先品牌软件开发：Sberbank、RZD、飞机建造公司。构建公司区块链开源库的核心开发人员：exonum-bootstrap，参与项目开发并担任顾问：后离开加入TAK DATA LINK 塔克链团队，目前为TAK DATA LINK 塔克链平台及技术主力工程师。 </section>
+                </div>
+                <img src="../images/1_04.png" alt="" class="header_pic" aos="fade-left">
+            </li>
+
+            <li>
+                <img src="../images/1_05.png" alt="" class="header_pic" aos="fade-right">
+                <div aos="fade-left">
+                    <p><span class="name">尼克拉维</span><span class="info">核心算法工程师 </span><img src="../images/team19.png" alt=""></p>
+                    <section>
+                        基于全球支付的区块链技术及金融契约逻辑的核心定位就是由Nicolaw 在发起人的理念基础上完善而来的，目前负责TAK DATA LINK 塔克链复杂的算法制定，同时对平台规则进行测试与运算。 </section>
+                </div>
+            </li>
+
+        </ul>
+    </div>
+
+    <!-- 底部foot -->
+    <div class="foot">
+        <div class="foot_top">
+            <div class="foot_content">
+                <div class="foot_content_ul">
+                    <div class="foot_msg_title">联系我们</div>
+                    <div class="foot_msg">
+                        <img src="../images/kf1.jpg" alt="">
+                        <img src="../images/kf2.jpg" alt="">
+                    </div>
+                </div>
+                <div class="foot_content_ul">
+                    <div class="foot_msg_title">下载地址</div>
+                    <div class="foot_msg">
+                        <a href=""><img src="../images/loading.png" alt="" class="foot_load" style="margin-bottom: 60px;"></a>
+                        <img src="../images/load.png" alt="">
+                    </div>
+                </div>
+                <div class="foot_content_ul">
+                    <div class="foot_msg_title">区块链介绍</div>
+                    <div class="foot_msg">
+                        <p>全球物联网应用增长区势明显，万物互联时代开启。全球新一轮科 技革命和产业变革正在孕育兴起，信息通信技术以前所未有的速度转化为 现实生产力，深刻改变着全球经济格局、利益格局、安全格局。物联网作 为信息通信技术的典型代表，在全球范围内呈现加速发展的态势。 </p>
+                    </div>
+                </div>
+                <div class="foot_content_ul">
+                    <div class="foot_msg_title">白皮书</div>
+                    <div class="foot_msg">
+                        <a href="" class="bps">区块链白皮书</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="foot_bottom">
+            <p>copy right @ 网络有限公司 ALL RIGHT RESERVED 版权</p>
+        </div>
+    </div>
+</body>
+<script>
+    AOS.init({
+        easing: 'ease-out-back',
+        duration: 1000
+    });
+</script>
+<script>
+    hljs.initHighlightingOnLoad();
+
+    $('.hero__scroll').on('click', function(e) {
+        $('html, body').animate({
+            scrollTop: $(window).height()
+        }, 1200);
+    });
+</script>
+
+</html>
